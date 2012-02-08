@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.mytravelingreddress</groupId>
+  <artifactId>mytravelingreddress</artifactId>
+  <version>1.0</version>
+  <name>My Traveling Red Dress</name>
+  <packaging>jar</packaging>
+  <url>http://www.mytravelingreddress.com</url>
+  <description>Site for organizing donation and tracking donation of desired items.</description>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.agilejava.docbkx</groupId>
+        <artifactId>docbkx-maven-plugin</artifactId>
+        <version>2.0.10-SNAPSHOT</version>
+        <executions>
+          <!-- -->
+          <execution>
+            <id>documentation identifier</id>
+            <phase>pre-site</phase>
+            <goals>
+              <!--
+              <goal>generate-html</goal>
+              <goal>generate-pdf</goal>
+              <goal>generate-...</goal>
+              -->
+              <goal>generate-pdf</goal>
+            </goals>
+            <configuration>
+              <!-- per execution configuration -->
+              <includes>book.xml</includes>
+              <draftMode>yes</draftMode>
+            </configuration>
+          </execution>
+        </executions>
+        <configuration>
+          <!-- shared configuration -->
+          <generatedSourceDirectory>${project.build.directory}/docbkx/generated</generatedSourceDirectory>
+          <xincludeSupported>true</xincludeSupported>
+          <paperType>A4</paperType>
+          <fop1Extensions>1</fop1Extensions>
+
+          <foCustomization>src/docbkx-stylesheet/fo/docbook.xsl</foCustomization>
+          
+          <customizationParameters>
+            <!-- additional XSLT parameters-->
+            <parameter>
+              <name>key</name>
+              <value>value</value>
+            </parameter>
+          </customizationParameters>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+	</dependencies>
+  
+  <properties>
+    <org.springframework.version>3.0.5.RELEASE</org.springframework.version>
+   </properties>
+
+</project>
